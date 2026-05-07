@@ -8,10 +8,14 @@ import astroI18next from "astro-i18next";
 import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from "@vite-pwa/astro";
 import icon from "astro-icon";
+import solidJs from "@astrojs/solid-js";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://astros.zank.studio",
+	output: "hybrid",
+	adapter: vercel(),
 	vite: {
 		define: {
 			__DATE__: `'${new Date().toISOString()}'`,
@@ -22,6 +26,8 @@ export default defineConfig({
 		sitemap(),
 		astroI18next(),
 		alpinejs(),
+		// SolidJS — scoped to the douyin component only to avoid conflicts with AlpineJS
+		solidJs({ include: ["**/components/DouyinDownloader.tsx"] }),
 		AstroPWA({
 			mode: "production",
 			base: "/",
