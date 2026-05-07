@@ -1,0 +1,17 @@
+---
+// src/pages/douyin.astro
+// Drop this file into your Astros theme's src/pages/ directory.
+// It integrates seamlessly with the existing layout while hosting
+// the SolidJS interactive island.
+import Layout from "../layouts/Layout.astro";
+import DouyinDownloader from "../components/DouyinDownloader";
+---
+
+<Layout
+  title="Douyin Downloader — Download Without Watermark"
+  description="Download Douyin videos in the best available quality, no watermark. Supports all resolutions and background music extraction."
+>
+  <!-- The SolidJS island is fully client-side (client:load). -->
+  <!-- The rest of the page is static Astro HTML. -->
+  <DouyinDownloader client:load />
+</Layout>
